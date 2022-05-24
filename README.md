@@ -18,6 +18,7 @@ These files have been tested and used to generate a live ELK deployment on Azure
 + [Ansible Filebeat Config file](https://github.com/bodmoncyba/GT_Cybersecurity_Project/blob/main/Ansible/filebeat-config.yml)
 + [Ansible Metricbeat Playbook](https://github.com/bodmoncyba/GT_Cybersecurity_Project/blob/main/Ansible/metricbeat-playbook.yml)
 + [Ansible Metricbeat Config file](https://github.com/bodmoncyba/GT_Cybersecurity_Project/blob/main/Ansible/metricbeat-config.yml)
+
 Configure your jump box to run Docker containers by installing docker.io and installing an Ansible container.
 + Run `sudo apt update` then `sudo apt install docker.io` in your GitBash CLI
 Verify Docker service is running
