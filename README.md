@@ -4,7 +4,10 @@ A collection of  my Cybersecurity tasks.
 ## Automated ELK Stack Deployment
 
 The files in this repository were used to configure the network depicted below.
-!(https://github.com/bodmoncyba/GT_Cybersecurity_Project/blob/main/Diagrams/Azure_vNet_ELK_Deployment.png “ELK-Server vNet Diagram”)
+
+![][diagram]
+[diagram](https://github.com/bodmoncyba/GT_Cybersecurity_Project/blob/main/Diagrams/Azure_vNet_ELK_Deployment.png “ELK-Server vNet Diagram”
+
 ![atl txt](https://github.com/bodmoncyba/GT_Cybersecurity_Project/blob/main/Diagrams/Azure_Cloud_Security.png “Azure vNet Security Diagram”)
 
 These files have been tested and used to generate a live ELK deployment on Azure. They can be used to either recreate the entire deployment pictured above. Alternatively, select portions of the yml and config file may be used to install only certain pieces of it, such as Filebeat.
