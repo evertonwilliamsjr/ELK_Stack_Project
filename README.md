@@ -76,15 +76,12 @@ Integrating an ELK server allows users to easily monitor the vulnerable VMs for 
 - **What does Filebeat watch for?** Filebeat monitors the log files or locations that you specify, collects log events, and forwards them either to Elasticsearch, Logstash or Kibana for indexing.
 - **What does Metricbeat record?** Metricbeat periodically collects metrics from the operating system and from services running on the server. Metricbeat takes the metrics and statistics that it collects and ships them to the output that you specify, such as Elasticsearch, Logstash or Kibana.
 
-The configuration details of each machine may be found below. 
 
+The configuration details of each machine may be found below. 
 _Note: Use the [Markdown Table Generator](http://www.tablesgenerator.com/markdown_tables) to add/remove values from the table._
 
-| Load Balancer | Reverse Proxy | Static Public IP | Linux |
-
-
 | Name                 | Function                  | IP Address          | Operating System |
-|:----------------------:|:---------------------------:|:---------------------:|:------------------:|
+|:----------------------|:---------------------------|:---------------------|:------------------|
 | Jump-Box-Provisioner | Gateway w/ Docker-Ansible | 10.0.0.4 /Public IP | Ubuntu Linux     |
 | Web-1                | Web Server w/ DVWA        | 10.0.0.5            | Ubuntu Linux     |
 | Web-2                | Web Server w/ DVWA        | 10.0.0.6            | Ubuntu Linux     |
@@ -94,21 +91,20 @@ _Note: Use the [Markdown Table Generator](http://www.tablesgenerator.com/markdow
 
 
 - Follow these steps below to create a Load Balancer for Web-1, Web-2 and Web-3 in Azure:
-++i. Create a load balancer
-++ii. Create a Virtual Machine Web-1 with Availability Set
-++iii. Create a Virtual Machine Web-2 with Availability Set
-++iv. Create a Virtual Machine Web-3 with Availability Set
-++v. Create a Load Balancing Rule
-++vi. Allow the AzureLoadBalancer Service in Security Group within the Virtual Network
+-- i. Create a load balancer
+-- ii. Create a Virtual Machine Web-1 with Availability Set
+-- iii. Create a Virtual Machine Web-2 with Availability Set
+-- iv. Create a Virtual Machine Web-3 with Availability Set
+-- v. Create a Load Balancing Rule
+-- vi. Allow the AzureLoadBalancer Service in Security Group within the Virtual Network
 
 - Follow these steps to evaluate the instances of the redundancy for Web-1, Web-2 and Web-3 VMs:
-+i. Verify that the DVWA website is accessible from your web browser.
+-- i. Verify that the DVWA website is accessible from your web browser.
 
-•	Open your Chrome browser > in your address bar type: http://[Load-Balancer-External-IP]/setup.php
-
-•	Confirm successful by viewing image: DVWA Redundancy Test
-+ii. Stop running Web-1 and Web-2 VMs from the Azure portal. Refresh the DVWA webpage and confirm if you still have access. View image
-+iii. Lastly, stop running Web-3 VM to ensure no access to the DVWA website and refresh the DVWA webpage. 
+-	Open your Chrome browser > in your address bar type: _http://[Load-Balancer-External-IP]/setup.php_
+-	Confirm successful by viewing image: DVWA Redundancy Test
+-- ii. Stop running Web-1 and Web-2 VMs from the Azure portal. Refresh the DVWA webpage and confirm if you still have access. [View image]
+--iii. Lastly, stop running Web-3 VM to ensure no access to the DVWA website and refresh the DVWA webpage. 
 [View image]
 
 
@@ -121,10 +117,10 @@ The _ELK-Server and Jump-Box-Provisioner_ VMs  are the only machines that can ac
 - Workstation’s Public IP via SSH/TCP port 22 - Jump-Box-Provisioner
 
 
-Machines within the network can only be accessed by _Workstation and Jump-Box-Provisioner_.
-- *Which machine did you allow to access your ELK VM? What was its IP address?*
-++•	Jump-Box-Provisioner IP: 10.0.0.4 via SSH port 22
-++•	Workstation IP: Public IP via TCP port 5601
+Machines within the network can only be accessed by local _Workstation_ and _Jump-Box-Provisioner_.
+- **Which machine did you allow to access your ELK VM? What was its IP address?**
+-- Jump-Box-Provisioner IP: 10.0.0.4 via SSH port 22
+-- Workstation IP: Public IP via TCP port 5601
 
 A summary of the access policies in place can be found in the table below.
 
@@ -139,7 +135,7 @@ A summary of the access policies in place can be found in the table below.
 
 ### Elk Configuration
 
-Ansible was used to automate configuration of the ELK machine. No configuration was performed manually, which is advantageous because Ansible allows you to seamlessly deploy complex multi-tier applications within your network. Not an expert in writing custom code to automate your systems? No worries. Ansible lets you list specified tasks to be performed by writing a playbook that reads YAML code. Per your input into your playbook .yml file, Ansible works in the background and figures out how to get your systems to the state you determined.   
+Ansible was used to automate configuration of the ELK machine. No configuration was performed manually, which is advantageous because Ansible allows you to seamlessly deploy complex multi-tier applications within your network. **Not an expert in writing custom code to automate your systems?** No worries. Ansible lets you list specified tasks to be performed by writing a playbook that reads YAML code. Per your input into your playbook .yml file, Ansible works in the background and figures out how to get your systems to the state you determined.   
 
 The playbook implements the following tasks:
 - Specifies a different host and username: 
@@ -152,11 +148,7 @@ The playbook implements the following tasks:
 
 + View [install-elk.yml](https://github.com/bodmoncyba/GT_Cybersecurity_Project/blob/main/Images/install-elk) playbook
 
-The following screenshot displays the result of running `docker ps` after successfully configuring the ELK instance.
-
-![TODO: Update the path with the name of your screenshot of docker ps output](Images/docker_ps_output.png)
-[Image-screenshot]
-![docker ps] ](https://github.com/bodmoncyba/GT_Cybersecurity_Project/blob/main/Images/docker_ps_output.png “docker ps output”)
+The following [docker ps output](https://github.com/bodmoncyba/GT_Cybersecurity_Project/blob/main/Images/docker_ps_output.png “docker ps output”)screenshot displays the result of running `docker ps` after successfully configuring the ELK instance.
 
 ### Target Machines & Beats
 This ELK server is configured to monitor the following machines:
@@ -165,7 +157,7 @@ This ELK server is configured to monitor the following machines:
 - Web-3: 10.0.0.7
 
 We have installed the following Beats on these machines:
-- Filebeat and Metricbeat
+- **Filebeat and Metricbeat**
 
 These Beats allow us to collect the following information from each machine:
 - _`Filebeat`_ helps generate and organize log files to send to Logstash and Elasticsearch. It logs information about the file system, including which files have been changed and when. Filebeat is often used to collect log files from very specific files, such as those generated by Apache, Microsoft Azure tools, the Nginx web server, and MySQL databases. Connect to Kibana and check the logs for changes made to the file system which can be filtered by a specific time or commonly used time intervals. _`Metricbeat`_ shows metrics on the Docker containers running, such as the Number of Containers, CPU usage(%), Memory usage(%), NetworkIO and DiskIO statistics.
@@ -177,13 +169,14 @@ SSH into the control node and follow the steps below:
 
 For ELK-Server VM Configuration:
 
-- Copy the [Ansible ELK Install and VM Config](https://github.com/bodmoncyba/GT_Cybersecurity_Project/blob/main/Ansible/install-elk.yml) file
+- Copy the [Ansible ELK Install and VM Config](https://github.com/bodmoncyba/GT_Cybersecurity_Project/blob/main/Ansible/install-elk.yml) file to `/etc/ansible`.
 
 - Execute this command to run playbook: `ansible-playbook install-elk.yml`
 
 For Filebeat:
 - Download Filebeat configuration file by running this command:
---`curl -L -O https://gist.githubusercontent.com/slape/5cc350109583af6cbe577bbcc0710c93/raw/eca603b72586fbe148c11f9c87bf96a63cb25760/Filebeat > /etc/ansible/filebeat-config.yml`
+```curl -L -O https://gist.githubusercontent.com/slape/5cc350109583af6cbe577bbcc0710c93/raw/eca603b72586fbe148c11f9c87bf96a63cb25760/Filebeat > /etc/ansible/filebeat-config.yml
+```
 - Copy the [filebeat-config.yml](https://github.com/bodmoncyba/GT_Cybersecurity_Project/blob/main/Ansible/files/filebeat-config.yml) file to /etc/ansible/files/filebeat-config.yml.
 
 - Update the _filebeat-config.yml_ file to include the following:
@@ -200,15 +193,15 @@ output.elasticsearch:
 ```
 
 - Run the [filebeat-playbook.yml] using this command `ansible-playbook filebeat-playbook.yml` and navigate to _http://[your.ELK-Sever-Public.IP]:5601/app/kibana > Logs: Add log data > System logs > Module status > Check data_ to check that the installation worked as expected.
-[filebeat-playbook.yml]:(https://github.com/bodmoncyba/GT_Cybersecurity_Project/blob/main/Ansible/roles/filebeat-playbook.yml)
-View [Filebeat Successful]: (https://github.com/bodmoncyba/GT_Cybersecurity_Project/blob/main/Images/filebeat_installation_complete.png)
+[filebeat-playbook.yml](https://github.com/bodmoncyba/GT_Cybersecurity_Project/blob/main/Ansible/roles/filebeat-playbook.yml)
+View [Filebeat Successful](https://github.com/bodmoncyba/GT_Cybersecurity_Project/blob/main/Images/filebeat_installation_complete.png)
 
 
 For Metricbeat:
 -Download Metricbeat configuration file by running this command:
---`curl -L -O https://gist.githubusercontent.com/slape/58541585cc1886d2e26cd8be557ce04c/raw/0ce2c7e744c54513616966affb5e9d96f5e12f73/metricbeat > /etc/ansible/metricbeat-config.yml`
-- Copy the [metricbeat-config.yml] file to /etc/ansible/files/metricbeat-config.yml.
-[metricbeat-config.yml](https://github.com/bodmoncyba/GT_Cybersecurity_Project/blob/main/Ansible/files/metricbeat-config.yml)
+```curl -L -O https://gist.githubusercontent.com/slape/58541585cc1886d2e26cd8be557ce04c/raw/0ce2c7e744c54513616966affb5e9d96f5e12f73/metricbeat > /etc/ansible/metricbeat-config.yml
+```
+- Copy the [metricbeat-config.yml](https://github.com/bodmoncyba/GT_Cybersecurity_Project/blob/main/Ansible/files/metricbeat-config.yml) file to /etc/ansible/files/metricbeat-config.yml.
 - Update the _metricbeat-config.yml_ file to include the following:
 ```python 
 output.elasticsearch:
@@ -223,19 +216,19 @@ output.elasticsearch:
 ```
 - Run the [metricbeat-playbook.yml] using this command `ansible-playbook metricbeat-playbook.yml` and navigate to http://[your.ELK-Sever-Public.IP]:5601/app/kibana > Metrics: Add metric data > Docker metrics > Module status > Check data to check that the installation worked as expected. 
 
-[metricbeat-playbook.yml]:(https://github.com/bodmoncyba/GT_Cybersecurity_Project/blob/main/Ansible/metricbeat-playbook.yml)
-[Metricbeat Successful](https://github.com/bodmoncyba/GT_Cybersecurity_Project/blob/main/Images/metricbeat_installation_complete.png)
+[metricbeat-playbook.yml](https://github.com/bodmoncyba/GT_Cybersecurity_Project/blob/main/Ansible/metricbeat-playbook.yml)
+View [Metricbeat Successful](https://github.com/bodmoncyba/GT_Cybersecurity_Project/blob/main/Images/metricbeat_installation_complete.png)
 
 
-- *Which file is the playbook? Where do you copy it?*
+- **Which file is the playbook? Where do you copy it?**
 - For Ansible we created the _ansible-playbook.yml_ as our playbook which was created in `/etc/ansible/` directory. See [Ansible Playbook](https://github.com/bodmoncyba/GT_Cybersecurity_Project/blob/main/Ansible/ansible-playbook.yml) for final solution.
 
---For Filebeat we created _filbeat-playbook.yml_ as our playbook and copied it to `/etc/ansible/roles/filebeat-playbook.yml`. See [Filebeat Playbook](https://github.com/bodmoncyba/GT_Cybersecurity_Project/blob/main/Ansible/roles/filebeat-playbook.yml) for final solution.
+-For Filebeat we created _filbeat-playbook.yml_ as our playbook and copied it to `/etc/ansible/roles/filebeat-playbook.yml`. See [Filebeat Playbook](https://github.com/bodmoncyba/GT_Cybersecurity_Project/blob/main/Ansible/roles/filebeat-playbook.yml) for final solution.
 
---For Metricbeat we created _metricbeat-playbook.yml_ as our playbook and copied it to `/etc/ansible/roles/metricbeat-playbook.yml`. See [Metricbeat Playbook](https://github.com/bodmoncyba/GT_Cybersecurity_Project/blob/main/Ansible/filebeat-playbook.yml) for final solution.
+- - For Metricbeat we created _metricbeat-playbook.yml_ as our playbook and copied it to `/etc/ansible/roles/metricbeat-playbook.yml`. See [Metricbeat Playbook](https://github.com/bodmoncyba/GT_Cybersecurity_Project/blob/main/Ansible/filebeat-playbook.yml) for final solution.
 
-*Which file do you update to make Ansible run the playbook on a specific machine?* 
-- You have to edit the ansible hosts file and list the private IP addresses of the webservers that need to be accessed. 
+**Which file do you update to make Ansible run the playbook on a specific machine?* *
+- You have to edit the ansible _hosts_ file and list the private IP addresses of the webservers that need to be accessed. 
 - Run `pwd` to verify you are in the correct directory, which should be `/etc/ansible`. This is the directory where the ansible hosts file lives. Use `nano hosts` command to view hosts file for edit.
 ```python
 #List the IP addresses of your webservers
@@ -250,7 +243,7 @@ output.elasticsearch:
 10.1.0.4 ansible_python_interpreter=/usr/bin/python3
 ```
 
-*How do I specify which machine to install the ELK server on versus which to install Filebeat on?*
+**How do I specify which machine to install the ELK server on versus which to install Filebeat on?**
 - After adding the private IP addresses of your webservers go to your _*playbook.yml_ file and specify whether you want the playbook installed on your webservers or your ELK server.  
 ```python
 ---
@@ -270,21 +263,23 @@ output.elasticsearch:
 --`sysadmin` is the remote user that has authority over ansible.
 
 - _Which URL do you navigate to in order to check that the ELK server is running?
-++ In web browser: http://[your.ELK-VM-Public.IP]:5601/app/kibana
-++ On localhost: sysadmin@10.1.0.4:curl localhost:5601/app/kibana
++ + In web browser: http://[your.ELK-VM-Public.IP]:5601/app/kibana
+- - On localhost: sysadmin@10.1.0.4:curl localhost:5601/app/kibana
 
 _As a **Bonus**, provide the specific commands the user will need to run to download the playbook, update the files, etc._
 
-###ADDITONAL NOTES:
-##How to get Filebeat installer :
+### ADDITONAL NOTES:
+## How to get Filebeat installer :
 1.	Login to Kibana > Logs : Add log data > System logs > DEB > Getting started
-2.	Copy: curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-7.6.1-amd64.deb
-How to get the Metricbeat installer:
+2.	Copy: `curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-7.6.1-amd64.deb`
+# How to get the Metricbeat installer:
 1.	Login to Kibana > Add Metric Data > Docker Metrics > DEB > Getting Started
-2.	Copy: curl -L -O https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-7.6.1-amd64.deb
+2.	Copy: `curl -L -O https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-7.6.1-amd64.deb`
 
-#How to Create the ELK Installation and VM Configuration
+# How to Create the ELK Installation and VM Configuration
 See the [install-elk.yml](https://https://github.com/bodmoncyba/GT_Cybersecurity_Project/blob/main/Ansible/install-elk.yml) file
 
-####[Cheatsheat]
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+#### [Cheatsheat]
+---
+****
+_____
