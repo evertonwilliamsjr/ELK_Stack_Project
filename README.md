@@ -100,10 +100,11 @@ _Note: Use the [Markdown Table Generator](http://www.tablesgenerator.com/markdow
 - Follow these steps to evaluate the instances of the redundancy for Web-1, Web-2 and Web-3 VMs:
    1. Verify that the DVWA website is accessible from your web browser.
    2. Open your Chrome browser > in your address bar type: _http://[Load-Balancer-External-IP]/setup.php_
-   3. Confirm successful: [View image](https://github.com/bodmoncyba/GT_Cybersecurity_Project/blob/main/Images/DVWA_Successful.png)
-   4. Stop running Web-1 and Web-2 VMs from the Azure portal. Refresh the DVWA webpage and confirm if you still have access. [Redundancy Test](https://github.com/bodmoncyba/GT_Cybersecurity_Project/blob/main/Images/DVWA_Successful.png)
+   3. [View image](https://github.com/bodmoncyba/GT_Cybersecurity_Project/blob/main/Images/DVWA_Successful.png) to confirm.
+   4. Stop running Web-1 and Web-2 VMs from the Azure portal. Refresh the DVWA webpage and confirm if you still have access. 
+     - [Redundancy Test Results](https://github.com/bodmoncyba/GT_Cybersecurity_Project/blob/main/Images/DVWA_Successful.png)
    6. Lastly, stop running Web-3 VM to ensure no access to the DVWA website and refresh the DVWA webpage. 
-[Redundancy Test](https://github.com/bodmoncyba/GT_Cybersecurity_Project/blob/main/Images/DVWA_Failed.png)
+     - [Redundancy Test Results](https://github.com/bodmoncyba/GT_Cybersecurity_Project/blob/main/Images/DVWA_Failed.png)
 
 ---
 ### Access Policies
@@ -143,7 +144,7 @@ The playbook implements the following tasks:
 - Since ELK requires more virtual memory, the next three tasks include increase the virtual memory, increase virtual memory on restart, and use more memory 
 - The next task downloads and launches a Docker ELK container with a parameter of _restart_policy: always_, which allows the ELK container to spin up after a restart and disregards the need to manually start the ELK container. Included in this task are a list of ports to publish from the container to the host
 - Lastly, this task enables Docker on boot which negates manually starting Docker
-  + View [install-elk.yml](https://github.com/bodmoncyba/GT_Cybersecurity_Project/blob/main/Images/install-elk) playbook
+  + View [install-elk.yml](https://github.com/bodmoncyba/GT_Cybersecurity_Project/blob/main/Images/install-elk.yml) playbook
 
 The following [docker ps output](https://github.com/bodmoncyba/GT_Cybersecurity_Project/blob/main/Images/docker_ps_output.png) screenshots displays the result of running `sudo su` then `docker ps` on all webservers after successfully configuring the ELK instance.
 ![atl text](https://github.com/bodmoncyba/GT_Cybersecurity_Project/blob/main/Images/docker_ps_output.png?raw=true "ELK docker ps output")
