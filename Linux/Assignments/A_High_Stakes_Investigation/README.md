@@ -29,8 +29,8 @@ Lucky Duck Casino has provided you with the following files if required:
 ### Lab Environment
 
 - You will use your local Vagrant virtual machine for today's activities. Please note that instructors and students have different access credentials.
-    - Username: `sysadmin`
-    - Password: `cybersecurity`
+    - Username: `username`
+    - Password: `password`
 
 ### Instructions 
 
