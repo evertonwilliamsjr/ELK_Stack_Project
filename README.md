@@ -154,7 +154,7 @@ The following [docker ps output](https://github.com/bodmoncyba/GT_Cybersecurity_
 ![atl text](https://github.com/bodmoncyba/GT_Cybersecurity_Project/blob/main/Images/docker_ps_output_Web-2.png?raw=true "Web-2 docker ps output")
 
 ![atl text](https://github.com/bodmoncyba/GT_Cybersecurity_Project/blob/main/Images/docker_ps_output_Web-3.png?raw=true "Web-3 docker ps output")
-- Status on all webservers configured with the ELK instance should show as **Up**.
+- Status on all webservers configured with the ELK instance should show as **[Up]**.
 ---
 ### Target Machines & Beats
 This ELK server is configured to monitor the following machines:
@@ -173,13 +173,13 @@ In order to use the playbook, you will need to have an Ansible control node alre
 
 SSH into the control node and follow the steps below:
 
-For ELK-Server VM Configuration:
+**For ELK-Server VM Configuration:**
 
 - Copy the [install-elk.yml](https://github.com/bodmoncyba/GT_Cybersecurity_Project/blob/main/Ansible/install-elk.yml) file to `/etc/ansible`.
 
 - Execute this command to run playbook: `ansible-playbook install-elk.yml`
 
-For Filebeat:
+**For Filebeat:**
 - Download Filebeat configuration file by running this command:
 ```python
 curl -L -O https://gist.githubusercontent.com/slape/5cc350109583af6cbe577bbcc0710c93/raw/eca603b72586fbe148c11f9c87bf96a63cb25760/Filebeat > /etc/ansible/filebeat-config.yml
@@ -204,7 +204,7 @@ output.elasticsearch:
 View [Filebeat Successful](https://github.com/bodmoncyba/GT_Cybersecurity_Project/blob/main/Images/filebeat_installation_complete.png)
 
 
-For Metricbeat:
+**For Metricbeat:**
 - Download Metricbeat configuration file by running this command:
 ```python
 curl -L -O https://gist.githubusercontent.com/slape/58541585cc1886d2e26cd8be557ce04c/raw/0ce2c7e744c54513616966affb5e9d96f5e12f73/metricbeat > /etc/ansible/metricbeat-config.yml
@@ -234,9 +234,9 @@ View [Metricbeat Successful](https://github.com/bodmoncyba/GT_Cybersecurity_Proj
 
   - For Metricbeat we created _metricbeat-playbook.yml_ as our playbook and copied it to `/etc/ansible/roles/metricbeat-playbook.yml`. See [Metricbeat Playbook](https://github.com/bodmoncyba/GT_Cybersecurity_Project/blob/main/Ansible/roles/metricbeat-playbook.yml) for final solution.
 
-**Which file do you update to make Ansible run the playbook on a specific machine?**
-- You have to edit the ansible _hosts_ file and list the private IP addresses of the webservers that need to be accessed. 
-- Run `pwd` to verify you are in the correct directory, which should be `/etc/ansible`. This is the directory where the ansible hosts file lives. Use the `nano hosts` command to view hosts file for edit.
+- **Which file do you update to make Ansible run the playbook on a specific machine?**
+  - You have to edit the ansible _hosts_ file and list the private IP addresses of the webservers that need to be accessed. 
+  - Run `pwd` to verify you are in the correct directory, which should be `/etc/ansible`. This is the directory where the ansible hosts file lives. Use the `nano hosts` command to view hosts file for edit.
 ```python
 #List the IP addresses of your webservers
 [webservers]
@@ -250,8 +250,8 @@ View [Metricbeat Successful](https://github.com/bodmoncyba/GT_Cybersecurity_Proj
 10.1.0.4 ansible_python_interpreter=/usr/bin/python3
 ```
 
-**How do I specify which machine to install the ELK server on versus which to install Filebeat on?**
-- After adding the private IP addresses of your webservers go to your _*playbook.yml_ file and specify whether you want the playbook installed on your webservers or your ELK server.  
+- **How do I specify which machine to install the ELK server on versus which to install Filebeat on?**
+  - After adding the private IP addresses of your webservers go to your _*playbook.yml_ file and specify whether you want the playbook installed on your webservers or your ELK server.  
 ```python
 ---
   - name: Configure Elk VM with Docker
@@ -262,7 +262,7 @@ View [Metricbeat Successful](https://github.com/bodmoncyba/GT_Cybersecurity_Proj
 ```
 In the above snippet from the _install-elk.yml_ file I specified "elk" as the hosts or the group of machines targeted for this installation that can only be performed by a "sysadmin" remote_user.
 
-## How to Edit the Ansible Configuration file
+### How to Edit the Ansible Configuration file
 
 - While connected to your Ansible container your `pwd` should be similar to  `root@8f57213ec250:/etc/ansible#` then `nano ansible.cfg` to view configuration file for edit.
 
@@ -273,6 +273,7 @@ In the above snippet from the _install-elk.yml_ file I specified "elk" as the ho
   + In web browser: _http://[your.ELK-VM-Public.IP]:5601/app/kibana_
   - On localhost: sysadmin@10.1.0.4:curl localhost:5601/app/kibana
 
+---
 ### _As a **Bonus**, provided below are specific commands the user will need to run in order to download the playbooks, update the files, etc._
 
 ---
