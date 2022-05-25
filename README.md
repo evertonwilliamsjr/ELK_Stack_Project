@@ -231,7 +231,7 @@ View [Metricbeat Successful](https://github.com/bodmoncyba/GT_Cybersecurity_Proj
 
   - For Filebeat we created _filbeat-playbook.yml_ as our playbook and copied it to `/etc/ansible/roles/filebeat-playbook.yml`. See [Filebeat Playbook](https://github.com/bodmoncyba/GT_Cybersecurity_Project/blob/main/Ansible/roles/filebeat-playbook.yml) for final solution.
 
-  - For Metricbeat we created _metricbeat-playbook.yml_ as our playbook and copied it to `/etc/ansible/roles/metricbeat-playbook.yml`. See [Metricbeat Playbook](https://github.com/bodmoncyba/GT_Cybersecurity_Project/blob/main/Ansible/filebeat-playbook.yml) for final solution.
+  - For Metricbeat we created _metricbeat-playbook.yml_ as our playbook and copied it to `/etc/ansible/roles/metricbeat-playbook.yml`. See [Metricbeat Playbook](https://github.com/bodmoncyba/GT_Cybersecurity_Project/blob/main/Ansible/metricbeat-playbook.yml) for final solution.
 
 **Which file do you update to make Ansible run the playbook on a specific machine?**
 - You have to edit the ansible _hosts_ file and list the private IP addresses of the webservers that need to be accessed. 
