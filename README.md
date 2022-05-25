@@ -90,19 +90,19 @@ _Note: Use the [Markdown Table Generator](http://www.tablesgenerator.com/markdow
 
 
 - Follow these steps below to create a Load Balancer for Web-1, Web-2 and Web-3 in Azure:
- - i. Create a load balancer
- - ii. Create a Virtual Machine Web-1 with Availability Set
- - iii. Create a Virtual Machine Web-2 with Availability Set
- - iv. Create a Virtual Machine Web-3 with Availability Set
- - v. Create a Load Balancing Rule
- - vi. Allow the AzureLoadBalancer Service in Security Group within the Virtual Network
+   1. Create a load balancer
+   2. Create a Virtual Machine Web-1 with Availability Set
+   3. Create a Virtual Machine Web-2 with Availability Set
+   4. Create a Virtual Machine Web-3 with Availability Set
+   5. Create a Load Balancing Rule
+   6. Allow the AzureLoadBalancer Service in Security Group within the Virtual Network
 
 - Follow these steps to evaluate the instances of the redundancy for Web-1, Web-2 and Web-3 VMs:
- - i. Verify that the DVWA website is accessible from your web browser.
-  -	Open your Chrome browser > in your address bar type: _http://[Load-Balancer-External-IP]/setup.php_
+   1. Verify that the DVWA website is accessible from your web browser.
+     -	Open your Chrome browser > in your address bar type: _http://[Load-Balancer-External-IP]/setup.php_
 -	Confirm successful by viewing image: [DVWA Redundancy Test]()
- - ii. Stop running Web-1 and Web-2 VMs from the Azure portal. Refresh the DVWA webpage and confirm if you still have access. [View image]()
- - iii. Lastly, stop running Web-3 VM to ensure no access to the DVWA website and refresh the DVWA webpage. 
+   2. Stop running Web-1 and Web-2 VMs from the Azure portal. Refresh the DVWA webpage and confirm if you still have access. *This should look like the previous image.* [View image]()
+   3. Lastly, stop running Web-3 VM to ensure no access to the DVWA website and refresh the DVWA webpage. 
 [View image]()
 
 ---
@@ -146,6 +146,14 @@ The playbook implements the following tasks:
   + View [install-elk.yml](https://github.com/bodmoncyba/GT_Cybersecurity_Project/blob/main/Images/install-elk) playbook
 
 The following [docker ps output](https://github.com/bodmoncyba/GT_Cybersecurity_Project/blob/main/Images/docker_ps_output.png) screenshot displays the result of running `docker ps` after successfully configuring the ELK instance.
+![atl text](https://github.com/bodmoncyba/GT_Cybersecurity_Project/blob/main/Images/docker_ps_output.png?raw=true "ELK docker ps output")
+
+![atl text](https://github.com/bodmoncyba/GT_Cybersecurity_Project/blob/main/Images/docker_ps_output_Web-1.png?raw=true "Web-1 docker ps output")
+
+![atl text](https://github.com/bodmoncyba/GT_Cybersecurity_Project/blob/main/Images/docker_ps_output_Web-2.png?raw=true "Web-2 docker ps output")
+
+![atl text](https://github.com/bodmoncyba/GT_Cybersecurity_Project/blob/main/Images/docker_ps_output_Web-3.png?raw=true "Web-3 docker ps output")
+- Status' on all webservers should say *Up*.
 ---
 ### Target Machines & Beats
 This ELK server is configured to monitor the following machines:
@@ -166,7 +174,7 @@ SSH into the control node and follow the steps below:
 
 For ELK-Server VM Configuration:
 
-- Copy the [Ansible ELK Install and VM Config](https://github.com/bodmoncyba/GT_Cybersecurity_Project/blob/main/Ansible/install-elk.yml) file to `/etc/ansible`.
+- Copy the [install-elk.yml](https://github.com/bodmoncyba/GT_Cybersecurity_Project/blob/main/Ansible/install-elk.yml) file to `/etc/ansible`.
 
 - Execute this command to run playbook: `ansible-playbook install-elk.yml`
 
@@ -190,8 +198,8 @@ output.elasticsearch:
    host: "10.1.0.4:5601"
 ```
 
-- Run the [filebeat-playbook.yml] using this command `ansible-playbook filebeat-playbook.yml` and navigate to _http://[your.ELK-Sever-Public.IP]:5601/app/kibana > Logs: Add log data > System logs > Module status > Check data_ to check that the installation worked as expected.
-[filebeat-playbook.yml](https://github.com/bodmoncyba/GT_Cybersecurity_Project/blob/main/Ansible/roles/filebeat-playbook.yml)
+- Run the [filebeat-playbook.yml](https://github.com/bodmoncyba/GT_Cybersecurity_Project/blob/main/Ansible/roles/filebeat-playbook.yml) using this command `ansible-playbook filebeat-playbook.yml` and navigate to _http://[your.ELK-Sever-Public.IP]:5601/app/kibana > Logs: Add log data > System logs > Module status > Check data_ to check that the installation worked as expected.
+
 View [Filebeat Successful](https://github.com/bodmoncyba/GT_Cybersecurity_Project/blob/main/Images/filebeat_installation_complete.png)
 
 
@@ -221,9 +229,9 @@ View [Metricbeat Successful](https://github.com/bodmoncyba/GT_Cybersecurity_Proj
 - **Which file is the playbook? Where do you copy it?**
 - For Ansible we created the _ansible-playbook.yml_ as our playbook which was created in `/etc/ansible/` directory. See [Ansible Playbook](https://github.com/bodmoncyba/GT_Cybersecurity_Project/blob/main/Ansible/ansible-playbook.yml) for final solution.
 
--For Filebeat we created _filbeat-playbook.yml_ as our playbook and copied it to `/etc/ansible/roles/filebeat-playbook.yml`. See [Filebeat Playbook](https://github.com/bodmoncyba/GT_Cybersecurity_Project/blob/main/Ansible/roles/filebeat-playbook.yml) for final solution.
+  - For Filebeat we created _filbeat-playbook.yml_ as our playbook and copied it to `/etc/ansible/roles/filebeat-playbook.yml`. See [Filebeat Playbook](https://github.com/bodmoncyba/GT_Cybersecurity_Project/blob/main/Ansible/roles/filebeat-playbook.yml) for final solution.
 
-- - For Metricbeat we created _metricbeat-playbook.yml_ as our playbook and copied it to `/etc/ansible/roles/metricbeat-playbook.yml`. See [Metricbeat Playbook](https://github.com/bodmoncyba/GT_Cybersecurity_Project/blob/main/Ansible/filebeat-playbook.yml) for final solution.
+  - For Metricbeat we created _metricbeat-playbook.yml_ as our playbook and copied it to `/etc/ansible/roles/metricbeat-playbook.yml`. See [Metricbeat Playbook](https://github.com/bodmoncyba/GT_Cybersecurity_Project/blob/main/Ansible/filebeat-playbook.yml) for final solution.
 
 **Which file do you update to make Ansible run the playbook on a specific machine?**
 - You have to edit the ansible _hosts_ file and list the private IP addresses of the webservers that need to be accessed. 
@@ -253,31 +261,256 @@ View [Metricbeat Successful](https://github.com/bodmoncyba/GT_Cybersecurity_Proj
 ```
 `In the above snippet from the _[install-elk.yml]_ file I specified "elk" as the hosts or the group of machines targeted for this installation that can only be performed by a "sysadmin" remote_user`
 
-##How to Edit the Ansible Configuration file
+## How to Edit the Ansible Configuration file
 
-- While connected to your Ansible container your `pwd` should be similar to  `root@8f57213ec250:/etc/ansible#’ then `nano ansible.cfg` to view configuration file for edit.
+- While connected to your Ansible container your `pwd` should be similar to  `root@8f57213ec250:/etc/ansible#` then `nano ansible.cfg` to view configuration file for edit.
 
-- While inside the nano text editor, Press CTRL + W > enter remote_user > then update line to reflect `remote_user = sysadmin`
---`sysadmin` is the remote user that has authority over ansible.
+- While inside the nano text editor, Press [CTRL + W] > enter remote_user > then update line to reflect `remote_user = sysadmin`
+  - `sysadmin` is the remote user that has authority over ansible.
 
-- _Which URL do you navigate to in order to check that the ELK server is running?
-  + In web browser: http://[your.ELK-VM-Public.IP]:5601/app/kibana
+- **Which URL do you navigate to in order to check that the ELK server is running?**
+  + In web browser: _http://[your.ELK-VM-Public.IP]:5601/app/kibana_
   - On localhost: sysadmin@10.1.0.4:curl localhost:5601/app/kibana
 
 _As a **Bonus**, provide the specific commands the user will need to run to download the playbook, update the files, etc._
+
 ---
 ### ADDITONAL NOTES:
 #### How to get Filebeat installer :
-1.	Login to Kibana > Logs : Add log data > System logs > DEB > Getting started
+1.	Login to _Kibana > Logs : Add log data > System logs > DEB > Getting started_
 2.	Copy: `curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-7.6.1-amd64.deb`
-# How to get the Metricbeat installer:
-1.	Login to Kibana > Add Metric Data > Docker Metrics > DEB > Getting Started
+#### How to get the Metricbeat installer:
+1.	Login to _Kibana > Add Metric Data > Docker Metrics > DEB > Getting Started_
 2.	Copy: `curl -L -O https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-7.6.1-amd64.deb`
 
 #### How to Create the ELK Installation and VM Configuration
 See the [install-elk.yml](https://https://github.com/bodmoncyba/GT_Cybersecurity_Project/blob/main/Ansible/install-elk.yml) file
 
-### [Cheatsheat]
+---
+---
+## Key Commands
+
+### SSH
+
+Secure Shell sets up an encrypted connection between two machines. Commands given on the first machine are executed on the second machine and output from the second machine is sent back to the first machine. 
+
+The result is the ability to control a remote machine using the command line while keeping all your actions private from any would be attacker or snooper.
+
+#### ssh-keygen
+
+The `ssh-keygen` command creates a private/public key pair that you can use to authenticate your SSH connections. Once created, the public key is copied to the server into the `~/.ssh/known_hosts` file.
+
+```bash
+# Create an ssh public/private key pair
+ssh-keygen
+```
+
+You can create a password for your SSH key if you wish, but this isn't recommended if the SSH key is going to be used for automation purposes. 
+
+#### ssh-copy-id
+
+The `ssh-copy-id` command will copy the public ssh key into the correct location on the remote server.
+
+```bash
+# copy the public key for 'mykey' to the ~/.ssh/known_hosts file on a remote machine
+ssh-copy-id -i ~/.ssh/mykey user@<host ip>
+```
+
+#### ssh
+
+The `ssh` command creates an ssh connection to a remote machine. If you do not have an SSH key in place, you will be prompted for a password. 
+
+```bash
+# Connect to the machine with the IP address 10.10.0.4 using the 'admin' user.
+ssh admin@10.10.0.4
+```
+
+You can create multiple keys for different purposes and different machines. To specify a particular key, use the `-i` flag.
+
+```bash
+# Connect to the machine at 10.10.0.4 using a specific 'mykey' identity
+ssh -i mykey.pub admin@10.10.0.4
+```
+
+### Docker
+
+Docker allows you to run Linux containers on any server or local machine. Containers are similar to a virtual machine, except they only run the resources necessary to complete their specific task.
+
+A container typically only runs one task. This could be a web server, or a particular application or any program you choose. They are similar to an `app` on your phone. A container is completely self sufficient and has everything it needs to run. 
+
+#### docker pull
+
+`docker pull` will copy a container to the server so you can run it. 
+
+```bash
+# download the 'dvwa' container from the 'cyberxsecurity' docker repository
+docker pull cyberxsecurity/dvwa
+```
+
+#### docker image ls
+
+`docker image ls` lists all of the container images that are copied to the server. Each image can be used to create any number of containers. 
+
+```bash
+docker image ls
+REPOSITORY               TAG                 IMAGE ID            CREATED             SIZE
+cyberxsecurity/ansible   latest              6657e0b22542        11 days ago         303MB
+ubuntu                   18.04               775349758637        7 weeks ago         64.2MB
+```
+
+#### docker container list -a
+
+`docker container list -a` will list _all_ of the containers on the system, including containers that are not running.
+
+#### docker run
+
+`docker run` will create a container from the specified image.
+
+```bash
+# Run the cyberxsecurity/ansible container
+docker run cyberxsecurity/ansible
+
+# Run the container using the image ID 6657e0b22542 
+docker run 6657e0b22542
+```
+
+#### docker start 
+
+`docker start container_name` will start a stopped container. This does not _create_ a container from a container image. Instead, it will only start a container that you already have created.
+
+#### docker stop
+
+`docker stop` will stop a running container. This is similar to shutting down a VM.
+
+```bash
+# stop the ansible container
+docker stop ansible
+```
+
+#### docker exec
+
+`docker exec` will execute a command directly on a container and return the output of that command to you. This is commonly used to get a bash shell on the container by executing the bash command.
+
+```bash
+# run the `bash` command on a container named 'my-container'
+docker exec -it my-container /bin/bash 
+```
+
+Here the `-it` flags stand for `interactive` and `terminal` or `interactive terminal` all together. The result is that this command returns a bash shell.
+
+#### docker attach
+
+`docker attach` will give you a shell on the specified container. This works similarly to an SSH connection and can be used instead of the `exec` command above to get a bash shell on a container.
+
+```bash
+# connect to the container named ansible
+docker attach ansible
+```
+
+#### docker image rm
+
+`docker image rm` removes an image from the server
+
+```bash
+# Remove the dvwa container image from the server
+docker image rm dvwa
+```
+
+### Ansible
+
+Ansible is a provisioner that can be used to configure any Linux machine. There is significant documentation for how to use Ansible on their website [HERE](https://docs.ansible.com/ansible/latest/user_guide/intro_getting_started.html).
+
+#### ansible all -m ping 
+
+Ansible usually needs a file full of commands called a 'playbook' in order to complete it's tasks. However, you can also execute single commands if you wish using the `-m` flag to specify the `module` you want to use.
+
+With this command we are using the 'ping' module (`-m`) on 'all' of the machines listed in the `hosts` file.
+
+```bash
+# Ping all of the hosts in the hosts file using the ping module
+ansible all -m ping
+```
+
+#### ansible-playbook
+
+The `ansible-playbook` command will run the contents of a `playbook.yml` file. The playbook file can be named anything you wish as long as it ends in `.yml` and it has the correct formatting.
+
+```bash
+# Run the playbook 'my-playbook.yml' 
+ansible-playbook my-playbook.yml
+```
+
+
+#### Ansible playbooks
+
+Playbooks always carry the `.yml` extension and begin with `---` on the first line to signify that it is a YAML file.
+
+The first few lines of the playbook will give global settings for the file and notate what machines the playbook is to use, if you would like to run the commands as `root`, and what `tasks` are to be completed.
+
+```bash
+---
+- name: Config Web VM with Docker
+  hosts: web
+  become: true
+  tasks:
+```
+
+In this Definition, we give the playbook a descriptive `name`, specify that is to run on the machines listed under the `web` headding in the `hosts` file, specify that all commands should be run as root, and then start listing the `tasks`.
+  - `name:` can be anything you wish
+  - `hosts:` specify what machines are to be used. Here we are using the `web` hosts.
+  - `become: true` means: 'Become the root user for all the following commands'
+  - `tasks:` starts the task section where all other commands/tasks will be listed.
+
+#### Ansible apt module
+
+Ansible modules can easily be found by googling 'Ansible module \<name-of-thing-you-want-to-do>'
+
+The `apt` module lets you install applications using the apt-get commands. 
+
+```bash
+# Install nano. force `apt-get` to be used instead of just `apt`
+  - name: Install nano
+    apt:
+      force_apt_get: yes
+      name: nano
+      state: present
+```
+See all of the `apt` module options [HERE](https://docs.ansible.com/ansible/latest/modules/apt_module.html)
+
+#### Ansible pip module
+
+The pip module allows you to install python packages as if you were using the command `pip install`
+
+The syntax is just like the `apt` module.
+
+```bash
+  - name: Install Docker python module
+    pip:
+      name: docker
+      state: present
+```
+
+See all of the pip module options [HERE](https://docs.ansible.com/ansible/latest/modules/pip_module.html)
+
+#### Ansible docker-container
+
+The `docker-container` module can be used to download and manage Docker containers. 
+
+Here we are downloading the container `cyberxsecurity/dvwa`, staring the container, and forwarding the host port 80 to the container port 80
+
+```bash
+  - name: download and launch a docker web container
+    docker_container:
+      name: dvwa
+      image: cyberxsecurity/dvwa
+      state: started
+      published_ports: 80:80
+```
+
+To see all of the `docker-container` module options, click [HERE](https://docs.ansible.com/ansible/latest/modules/docker_container_module.html)
+
+
 
 ****
 _____
+---
