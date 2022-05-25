@@ -1,7 +1,4 @@
-# GT_Cybersecurity_Project
-A collection of my Cybersecurity tasks completed.
-
-## Automated ELK Stack Deployment
+# Automated ELK Stack Deployment
 
 The files in this repository were used to configure the network depicted below.
 
@@ -12,7 +9,7 @@ These files have been tested and used to generate a live ELK deployment on Azure
 + [Ansible Playbook](https://github.com/bodmoncyba/GT_Cybersecurity_Project/blob/main/Ansible/ansible-playbook.yml)
 + [Ansible Hosts](https://github.com/bodmoncyba/GT_Cybersecurity_Project/blob/main/Ansible/hosts)
 + [Ansible Config file](https://github.com/bodmoncyba/GT_Cybersecurity_Project/blob/main/Ansible/ansible.cfg)
-+ [Ansible ELK Install and VM Config](https://github.com/bodmoncyba/GT_Cybersecurity_Project/blob/main/Ansible/install-elk.yml)
++ [ELK Installation](https://github.com/bodmoncyba/GT_Cybersecurity_Project/blob/main/Ansible/install-elk.yml)
 + [Filebeat Playbook](https://github.com/bodmoncyba/GT_Cybersecurity_Project/blob/main/Ansible/roles/filebeat-playbook.yml)
 + [Filebeat Config file](https://github.com/bodmoncyba/GT_Cybersecurity_Project/blob/main/Ansible/files/filebeat-config.yml)
 + [Metricbeat Playbook](https://github.com/bodmoncyba/GT_Cybersecurity_Project/blob/main/Ansible/roles/metricbeat-playbook.yml)
@@ -79,7 +76,7 @@ Integrating an ELK server allows users to easily monitor the vulnerable VMs for 
 The configuration details of each machine may be found below. 
 _Note: Use the [Markdown Table Generator](http://www.tablesgenerator.com/markdown_tables) to add/remove values from the table._
 
-| Name                 | Function                  | IP Address          | Operating System |
+| **Name                 | Function                  | IP Address          | Operating System** |
 |:----------------------|:---------------------------|:---------------------|:------------------|
 | Jump-Box-Provisioner | Gateway w/ Docker-Ansible | 10.0.0.4 /Public IP | Ubuntu Linux     |
 | Web-1                | Web Server w/ DVWA        | 10.0.0.5            | Ubuntu Linux     |
@@ -94,16 +91,20 @@ _Note: Use the [Markdown Table Generator](http://www.tablesgenerator.com/markdow
    2. Create a Virtual Machine Web-1 with Availability Set
    3. Create a Virtual Machine Web-2 with Availability Set
    4. Create a Virtual Machine Web-3 with Availability Set
-   5. Create a Load Balancing Rule
-   6. Allow the AzureLoadBalancer Service in Security Group within the Virtual Network
+   5. Assign a Frontend IP configuration to your Load Balancer
+   6. Add Web-1, Web-2, and Web-3 to the Backend pools
+   7. Create a Health probe for traffic coming through HTTP port 80
+   8. Create a Load balancing rule allow traffic through port 80
+   9. _By default, Azure allows access to the **AzureLoadBalancer Service** based on Inbound Security Rule -65001_ 
 
 - Follow these steps to evaluate the instances of the redundancy for Web-1, Web-2 and Web-3 VMs:
    1. Verify that the DVWA website is accessible from your web browser.
-     -	Open your Chrome browser > in your address bar type: _http://[Load-Balancer-External-IP]/setup.php_
--	Confirm successful by viewing image: [DVWA Redundancy Test]()
-   2. Stop running Web-1 and Web-2 VMs from the Azure portal. Refresh the DVWA webpage and confirm if you still have access. *This should look like the previous image.* [View image]()
-   3. Lastly, stop running Web-3 VM to ensure no access to the DVWA website and refresh the DVWA webpage. 
-[View image]()
+   2. Open your Chrome browser > in your address bar type: _http://[Load-Balancer-External-IP]/setup.php_
+   3. Confirm successful: [View image](https://github.com/bodmoncyba/GT_Cybersecurity_Project/blob/main/Images/DVWA_Successful.png)
+   4. Stop running Web-1 and Web-2 VMs from the Azure portal. Refresh the DVWA webpage and confirm if you still have access. 
+    - *This should look like the previous image.* [View image](https://github.com/bodmoncyba/GT_Cybersecurity_Project/blob/main/Images/DVWA_Successful.png)
+   6. Lastly, stop running Web-3 VM to ensure no access to the DVWA website and refresh the DVWA webpage. 
+[View image](https://github.com/bodmoncyba/GT_Cybersecurity_Project/blob/main/Images/DVWA_Failed.png)
 
 ---
 ### Access Policies
@@ -122,7 +123,7 @@ Machines within the network can only be accessed by local _Workstation_ and _Jum
 
 A summary of the access policies in place can be found in the table below.
 
-| Name     | Publicly Accessible | Allowed IP Addresses |
+| **Name     | Publicly Accessible | Allowed IP Addresses** |
 |:----------|:---------------------|:----------------------|
 | Jump-Box-Provisioner | Yes | Workstation Public IP on SSH 22 |
 | Web-1    | No | 10.0.0.4 on SSH 22 |
@@ -145,7 +146,7 @@ The playbook implements the following tasks:
 - Lastly, this task enables Docker on boot which negates manually starting Docker
   + View [install-elk.yml](https://github.com/bodmoncyba/GT_Cybersecurity_Project/blob/main/Images/install-elk) playbook
 
-The following [docker ps output](https://github.com/bodmoncyba/GT_Cybersecurity_Project/blob/main/Images/docker_ps_output.png) screenshot displays the result of running `docker ps` after successfully configuring the ELK instance.
+The following [docker ps output](https://github.com/bodmoncyba/GT_Cybersecurity_Project/blob/main/Images/docker_ps_output.png) screenshots displays the result of running `sudo su` then `docker ps` on all webservers after successfully configuring the ELK instance.
 ![atl text](https://github.com/bodmoncyba/GT_Cybersecurity_Project/blob/main/Images/docker_ps_output.png?raw=true "ELK docker ps output")
 
 ![atl text](https://github.com/bodmoncyba/GT_Cybersecurity_Project/blob/main/Images/docker_ps_output_Web-1.png?raw=true "Web-1 docker ps output")
@@ -153,7 +154,7 @@ The following [docker ps output](https://github.com/bodmoncyba/GT_Cybersecurity_
 ![atl text](https://github.com/bodmoncyba/GT_Cybersecurity_Project/blob/main/Images/docker_ps_output_Web-2.png?raw=true "Web-2 docker ps output")
 
 ![atl text](https://github.com/bodmoncyba/GT_Cybersecurity_Project/blob/main/Images/docker_ps_output_Web-3.png?raw=true "Web-3 docker ps output")
-- Status' on all webservers should say *Up*.
+- Status' on all webservers configured with the ELK instance should say **Up**.
 ---
 ### Target Machines & Beats
 This ELK server is configured to monitor the following machines:
@@ -272,7 +273,7 @@ View [Metricbeat Successful](https://github.com/bodmoncyba/GT_Cybersecurity_Proj
   + In web browser: _http://[your.ELK-VM-Public.IP]:5601/app/kibana_
   - On localhost: sysadmin@10.1.0.4:curl localhost:5601/app/kibana
 
-_As a **Bonus**, provide the specific commands the user will need to run to download the playbook, update the files, etc._
+## _As a **Bonus**, provided below are specific commands the user will need to run in order to download the playbooks, update the filess, etc._
 
 ---
 ### ADDITONAL NOTES:
@@ -331,7 +332,7 @@ You can create multiple keys for different purposes and different machines. To s
 # Connect to the machine at 10.10.0.4 using a specific 'mykey' identity
 ssh -i mykey.pub admin@10.10.0.4
 ```
-
+---
 ### Docker
 
 Docker allows you to run Linux containers on any server or local machine. Containers are similar to a virtual machine, except they only run the resources necessary to complete their specific task.
@@ -415,7 +416,7 @@ docker attach ansible
 # Remove the dvwa container image from the server
 docker image rm dvwa
 ```
-
+---
 ### Ansible
 
 Ansible is a provisioner that can be used to configure any Linux machine. There is significant documentation for how to use Ansible on their website [HERE](https://docs.ansible.com/ansible/latest/user_guide/intro_getting_started.html).
@@ -509,8 +510,6 @@ Here we are downloading the container `cyberxsecurity/dvwa`, staring the contain
 
 To see all of the `docker-container` module options, click [HERE](https://docs.ansible.com/ansible/latest/modules/docker_container_module.html)
 
-
-
 ****
-_____
----
+****
+****
