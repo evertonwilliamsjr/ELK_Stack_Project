@@ -1,0 +1,32 @@
+
+Findings:
+---------
+
+Day                       Hour         Losses
+
+0310_win_loss_player_data:05:00:00 AM -$82,348
+0310_win_loss_player_data:08:00:00 AM -$97,383
+0310_win_loss_player_data:02:00:00 PM -$82,348
+0310_win_loss_player_data:08:00:00 PM -$65,348
+0310_win_loss_player_data:11:00:00 PM -$88,383
+
+0312_win_loss_player_data:05:00:00 AM -$182,300
+0312_win_loss_player_data:08:00:00 AM -$97,383
+0312_win_loss_player_data:02:00:00 PM -$82,348
+0312_win_loss_player_data:08:00:00 PM -$65,792
+0312_win_loss_player_data:11:00:00 PM -$88,229
+
+0315_win_loss_player_data:05:00:00 AM -$82,844
+0315_win_loss_player_data:08:00:00 AM -$97,001
+0315_win_loss_player_data:02:00:00 PM -$182,419
+
+Total times losses occurred during the week of March 10th: 13
+
+
+After isolating all of the losses that occurred on March 10th, 12th, and 15th from above, I analyzed the data and found that 
+'Mylie Schmidt' was playing during each of those 13 occurrences.
+
+During the week of March 10th, Mylie Schmidt was playing a total of 19 different times (13 of which Lucky Duck Casino experienced losses).
+
+
+

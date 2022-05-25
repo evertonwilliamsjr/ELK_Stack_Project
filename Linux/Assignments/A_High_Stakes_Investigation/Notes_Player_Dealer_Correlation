@@ -1,0 +1,13 @@
+
+Summary:
+--------
+
+After retrieving Lucky Duck Casino's data from their database system, I analyzed days where they experienced
+major losses. More specifically, data of their wins and losses, player analysis, and dealer schedules from
+March 10th, 12th, and 15th. After isolating all of the losses from the win/loss player database, I was able
+to identify one player in particular that was playing Roulette during those occurrences. 'Mylie Schmidt'
+was the only player playing during each of those 13 occurrences. I then crossed referenced those specific 
+dates and times with data from the dealer schedules database. I found that 'Billy Jones' was the primary Roulette 
+dealer working during the 13 times Lucky Duck Casino experienced major losses. Based on my findings, I believe 
+that 'Mylie Schmidt' and 'Billy Jones' are colluding to scam Lucky Duck Casino out of thousands of dollars.
+
