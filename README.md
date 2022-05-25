@@ -222,7 +222,7 @@ output.elasticsearch:
  setup.kibana:
    host: "10.1.0.4:5601"
 ```
-- Run the [metricbeat-playbook.yml](https://github.com/bodmoncyba/GT_Cybersecurity_Project/blob/main/Ansible/metricbeat-playbook.yml) using this command `ansible-playbook metricbeat-playbook.yml` and navigate to http://[your.ELK-Sever-Public.IP]:5601/app/kibana > Metrics: Add metric data > Docker metrics > Module status > Check data to check that the installation worked as expected. 
+- Run the [metricbeat-playbook.yml](https://github.com/bodmoncyba/GT_Cybersecurity_Project/blob/main/Ansible/roles/metricbeat-playbook.yml) using this command `ansible-playbook metricbeat-playbook.yml` and navigate to http://[your.ELK-Sever-Public.IP]:5601/app/kibana > Metrics: Add metric data > Docker metrics > Module status > Check data to check that the installation worked as expected. 
 
 View [Metricbeat Successful](https://github.com/bodmoncyba/GT_Cybersecurity_Project/blob/main/Images/metricbeat_installation_complete.png)
 
@@ -232,7 +232,7 @@ View [Metricbeat Successful](https://github.com/bodmoncyba/GT_Cybersecurity_Proj
 
   - For Filebeat we created _filbeat-playbook.yml_ as our playbook and copied it to `/etc/ansible/roles/filebeat-playbook.yml`. See [Filebeat Playbook](https://github.com/bodmoncyba/GT_Cybersecurity_Project/blob/main/Ansible/roles/filebeat-playbook.yml) for final solution.
 
-  - For Metricbeat we created _metricbeat-playbook.yml_ as our playbook and copied it to `/etc/ansible/roles/metricbeat-playbook.yml`. See [Metricbeat Playbook](https://github.com/bodmoncyba/GT_Cybersecurity_Project/blob/main/Ansible/metricbeat-playbook.yml) for final solution.
+  - For Metricbeat we created _metricbeat-playbook.yml_ as our playbook and copied it to `/etc/ansible/roles/metricbeat-playbook.yml`. See [Metricbeat Playbook](https://github.com/bodmoncyba/GT_Cybersecurity_Project/blob/main/Ansible/roles/metricbeat-playbook.yml) for final solution.
 
 **Which file do you update to make Ansible run the playbook on a specific machine?**
 - You have to edit the ansible _hosts_ file and list the private IP addresses of the webservers that need to be accessed. 
