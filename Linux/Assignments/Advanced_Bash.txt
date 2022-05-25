@@ -472,4 +472,3 @@ turing:lakers:18387:0:99999:7:::
 sysd:hacker:19084:0:99999:7:::
 
 8 password hashes cracked, 0 left
->>>>>>> 343f9748e5c5bb9a0cb0f86ea96d51542286c0c2
