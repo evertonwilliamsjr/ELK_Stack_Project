@@ -290,7 +290,7 @@ In the above snippet from the _install-elk.yml_ file I specified "elk" as the ho
 
 ---
 ---
-## Key Commands
+## Key Commands:
 
 ### SSH
 
