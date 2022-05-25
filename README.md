@@ -228,7 +228,7 @@ View [Metricbeat Successful](https://github.com/bodmoncyba/GT_Cybersecurity_Proj
 
 
 - **Which file is the playbook? Where do you copy it?**
-- For Ansible we created the _ansible-playbook.yml_ as our playbook which was created in `/etc/ansible/` directory. See [Ansible Playbook](https://github.com/bodmoncyba/GT_Cybersecurity_Project/blob/main/Ansible/ansible-playbook.yml) for final solution.
+  - For Ansible we created the _ansible-playbook.yml_ as our playbook which was created in `/etc/ansible/` directory. See [Ansible Playbook](https://github.com/bodmoncyba/GT_Cybersecurity_Project/blob/main/Ansible/ansible-playbook.yml) for final solution.
 
   - For Filebeat we created _filbeat-playbook.yml_ as our playbook and copied it to `/etc/ansible/roles/filebeat-playbook.yml`. See [Filebeat Playbook](https://github.com/bodmoncyba/GT_Cybersecurity_Project/blob/main/Ansible/roles/filebeat-playbook.yml) for final solution.
 
