@@ -144,7 +144,7 @@ The playbook implements the following tasks:
 - Since ELK requires more virtual memory, the next three tasks include increase the virtual memory, increase virtual memory on restart, and use more memory 
 - The next task downloads and launches a Docker ELK container with a parameter of _restart_policy: always_, which allows the ELK container to spin up after a restart and disregards the need to manually start the ELK container. Included in this task are a list of ports to publish from the container to the host
 - Lastly, this task enables Docker on boot which negates manually starting Docker
-  + View [install-elk.yml](https://github.com/bodmoncyba/GT_Cybersecurity_Project/blob/main/Images/install-elk.yml) playbook
+  + View [install-elk.yml](https://github.com/bodmoncyba/GT_Cybersecurity_Project/blob/main/Ansible/install-elk.yml) playbook
 
 The following [docker ps output](https://github.com/bodmoncyba/GT_Cybersecurity_Project/blob/main/Images/docker_ps_output.png) screenshots displays the result of running `sudo su` then `docker ps` on all webservers after successfully configuring the ELK instance.
 ![atl text](https://github.com/bodmoncyba/GT_Cybersecurity_Project/blob/main/Images/docker_ps_output.png?raw=true "ELK docker ps output")
