@@ -95,16 +95,15 @@ _Note: Use the [Markdown Table Generator](http://www.tablesgenerator.com/markdow
    6. Add Web-1, Web-2, and Web-3 to the Backend pools
    7. Create a Health probe for traffic coming through HTTP port 80
    8. Create a Load balancing rule allow traffic through port 80
-   9. _By default, Azure allows access to the **AzureLoadBalancer Service** based on Inbound Security Rule -65001_ 
+   9. _**By default, Azure allows access to the AzureLoadBalancer Service** based on Inbound Security Rule -65001_** 
 
 - Follow these steps to evaluate the instances of the redundancy for Web-1, Web-2 and Web-3 VMs:
    1. Verify that the DVWA website is accessible from your web browser.
    2. Open your Chrome browser > in your address bar type: _http://[Load-Balancer-External-IP]/setup.php_
    3. Confirm successful: [View image](https://github.com/bodmoncyba/GT_Cybersecurity_Project/blob/main/Images/DVWA_Successful.png)
-   4. Stop running Web-1 and Web-2 VMs from the Azure portal. Refresh the DVWA webpage and confirm if you still have access. 
-    - *This should look like the previous image.* [View image](https://github.com/bodmoncyba/GT_Cybersecurity_Project/blob/main/Images/DVWA_Successful.png)
+   4. Stop running Web-1 and Web-2 VMs from the Azure portal. Refresh the DVWA webpage and confirm if you still have access. [Redundancy Test](https://github.com/bodmoncyba/GT_Cybersecurity_Project/blob/main/Images/DVWA_Successful.png)
    6. Lastly, stop running Web-3 VM to ensure no access to the DVWA website and refresh the DVWA webpage. 
-[View image](https://github.com/bodmoncyba/GT_Cybersecurity_Project/blob/main/Images/DVWA_Failed.png)
+[Redundancy Test](https://github.com/bodmoncyba/GT_Cybersecurity_Project/blob/main/Images/DVWA_Failed.png)
 
 ---
 ### Access Policies
@@ -154,7 +153,7 @@ The following [docker ps output](https://github.com/bodmoncyba/GT_Cybersecurity_
 ![atl text](https://github.com/bodmoncyba/GT_Cybersecurity_Project/blob/main/Images/docker_ps_output_Web-2.png?raw=true "Web-2 docker ps output")
 
 ![atl text](https://github.com/bodmoncyba/GT_Cybersecurity_Project/blob/main/Images/docker_ps_output_Web-3.png?raw=true "Web-3 docker ps output")
-- Status' on all webservers configured with the ELK instance should say **Up**.
+- Status on all webservers configured with the ELK instance should show as **Up**.
 ---
 ### Target Machines & Beats
 This ELK server is configured to monitor the following machines:
@@ -236,7 +235,7 @@ View [Metricbeat Successful](https://github.com/bodmoncyba/GT_Cybersecurity_Proj
 
 **Which file do you update to make Ansible run the playbook on a specific machine?**
 - You have to edit the ansible _hosts_ file and list the private IP addresses of the webservers that need to be accessed. 
-- Run `pwd` to verify you are in the correct directory, which should be `/etc/ansible`. This is the directory where the ansible hosts file lives. Use `nano hosts` command to view hosts file for edit.
+- Run `pwd` to verify you are in the correct directory, which should be `/etc/ansible`. This is the directory where the ansible hosts file lives. Use the `nano hosts` command to view hosts file for edit.
 ```python
 #List the IP addresses of your webservers
 [webservers]
@@ -260,7 +259,7 @@ View [Metricbeat Successful](https://github.com/bodmoncyba/GT_Cybersecurity_Proj
     become: true
     tasks:
 ```
-`In the above snippet from the _[install-elk.yml]_ file I specified "elk" as the hosts or the group of machines targeted for this installation that can only be performed by a "sysadmin" remote_user`
+In the above snippet from the _install-elk.yml_ file I specified "elk" as the hosts or the group of machines targeted for this installation that can only be performed by a "sysadmin" remote_user.
 
 ## How to Edit the Ansible Configuration file
 
@@ -273,7 +272,7 @@ View [Metricbeat Successful](https://github.com/bodmoncyba/GT_Cybersecurity_Proj
   + In web browser: _http://[your.ELK-VM-Public.IP]:5601/app/kibana_
   - On localhost: sysadmin@10.1.0.4:curl localhost:5601/app/kibana
 
-## _As a **Bonus**, provided below are specific commands the user will need to run in order to download the playbooks, update the filess, etc._
+### _As a **Bonus**, provided below are specific commands the user will need to run in order to download the playbooks, update the files, etc._
 
 ---
 ### ADDITONAL NOTES:
@@ -285,7 +284,7 @@ View [Metricbeat Successful](https://github.com/bodmoncyba/GT_Cybersecurity_Proj
 2.	Copy: `curl -L -O https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-7.6.1-amd64.deb`
 
 #### How to Create the ELK Installation and VM Configuration
-See the [install-elk.yml](https://https://github.com/bodmoncyba/GT_Cybersecurity_Project/blob/main/Ansible/install-elk.yml) file
+- View the [install-elk.yml](https://https://github.com/bodmoncyba/GT_Cybersecurity_Project/blob/main/Ansible/install-elk.yml) file.
 
 ---
 ---
