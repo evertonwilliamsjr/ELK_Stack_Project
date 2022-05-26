@@ -123,7 +123,7 @@ Machines within the network can only be accessed by local _Workstation_ and _Jum
 
 A summary of the access policies in place can be found in the table below.
 
-| **Name**     | **Publicly Accessible** | **Allowed IP Addresses** |
+| <ins>**Name**</ins>     | **Publicly Accessible** | **Allowed IP Addresses** |
 |:----------|:---------------------|:----------------------|
 | Jump-Box-Provisioner | Yes | Workstation Public IP on SSH 22 |
 | Web-1    | No | 10.0.0.4 on SSH 22 |
