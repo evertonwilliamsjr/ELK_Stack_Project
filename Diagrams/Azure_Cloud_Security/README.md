@@ -1,4 +1,5 @@
 ## Cloud Security:
+![atl text](https://github.com/bodmoncyba/GT_Cybersecurity_Project/blob/main/Diagrams/Azure_Cloud_Security/Azure_Cloud_Security.png?raw=true "Azure Cloud Security Diagram")
 
 ### Background
 
