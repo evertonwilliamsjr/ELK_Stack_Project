@@ -43,4 +43,4 @@ Use a free account at [draw.io](https://app.diagrams.net/) to diagram the entire
     - All 4 VMs that you have launched
     - Where Docker and Ansible are deployed
 ---
-© 2020 Trilogy Education Services, a 2U, Inc. brand. All Rights Reserved.
+
