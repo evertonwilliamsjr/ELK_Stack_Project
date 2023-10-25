@@ -4,7 +4,7 @@ The files in this repository were used to configure the network depicted below.
 
 ![atl text](https://github.com/bodmoncyba/GT_Cybersecurity_Project/blob/main/Diagrams/Azure_ELK-Server.png?raw=true "ELK-Server vNet Diagram")
 
-These files have been tested and used to generate a live ELK deployment on Azure. They can be used to either recreate the entire deployment pictured above. Alternatively, select portions of the yml and config file may be used to install only certain pieces of it, such as Filebeat.
+These files have been tested and used to generate a live ELK deployment on Microsoft Azure cloud platform. These files can be used to either recreate the entire deployment as shown above, or you can selectively use portions of the .yml and .config files to install specific components, such as Filebeat.
 
 + [Ansible Playbook](https://github.com/bodmoncyba/GT_Cybersecurity_Project/blob/main/Ansible/ansible-playbook.yml)
 + [Ansible Hosts](https://github.com/bodmoncyba/GT_Cybersecurity_Project/blob/main/Ansible/hosts)
@@ -66,7 +66,7 @@ The main purpose of this network is to expose a load-balanced and monitored inst
 Load balancing ensures that the application will be highly *available,* in addition to restricting *traffic* to the network.
 - **What aspect of security do load balancers protect?** Load balancers protect against denial-of-service (DoS) attacks. Since the load balancer sits between the clients and the servers it can analyze the incoming traffic and better determine which servers to forward the traffic to. The logical distribution of traffic by the load balancer prevents one particular server from getting overloaded with traffic resulting in uninterrupted access of your website. Load balancers offer a health probe function that regularly checks the endpoint status of all machines behind the load balancer before forwarding traffic. If a machine is non-functional the load balancer will divert traffic from the malfunctioning machine until the issue is resolved. Load balancers enhance user experience by providing additional security, performance, and resilience to your application.
 
-- **What is the advantage of a jump box?** A jump box limits access from the public to a virtual network. In order to access other virtual machines within the virtual network you would need the private IP addresses of those machines. Having a jump box or jump server within a virtual network allows network segmentation, and additional security that enhances access controls to a virtual network and its contents.
+- **What is the advantage of a jump box?** A jump box restricts public access to a virtual network. To access other virtual machines within the virtual network, you would require the private IP addresses of those machines. Having a jump box or jump server within a virtual network enhances security through network segmentation and improved access controls for both the virtual network and its data.
 
 Integrating an ELK server allows users to easily monitor the vulnerable VMs for changes to the _data_ and system _logs_.
 - **What does Filebeat watch for?** Filebeat monitors the log files or locations that you specify, collects log events, and forwards them either to Elasticsearch, Logstash or Kibana for indexing.
